@@ -4,14 +4,14 @@ This project demonstrates how to build custom middleware in **ASP.NET Core** to 
 
 ## 🔧 Features
 
-- Custom login middleware handling POST `/` requests
+- Custom login middleware handling `POST /` requests
 - Returns appropriate HTTP status codes and messages
 - Validates email and password (hardcoded for demonstration)
 - Handles:
   - ✅ Valid credentials (returns `200 OK`)
   - ❌ Invalid credentials (returns `400 Bad Request`)
   - ❌ Missing input (returns `400 Bad Request` with detailed messages)
-  - ✅ GET `/` request returns welcome message
+  - ✅ `GET /` request returns welcome message
 
 ## 📂 Project Structure
 
@@ -30,23 +30,22 @@ Send a `POST` request with form data:
 
 **URL:** `http://localhost:5000/`  
 **Body (x-www-form-urlencoded):**
+
 email=admin@example.com
 password=admin1234
-
 
 **Response:**
 ```http
 200 OK
 Login successful
 
-✅ GET / Request
-Accessing http://localhost:5000/ with a GET request returns a welcome message:
+Input:
+email=wrong@example.com
+password=wrongpass
 
-http
-Copy
-Edit
-200 OK
-Welcome! Please use POST to log in
+Response:
+400 Bad Request
+Invalid credentials
 
 🧠 Learning Purpose
 This project is ideal for understanding:
@@ -68,3 +67,8 @@ Minimal API
 
 👨‍💻 Author
 Nam Cap (@NamCap99)
+
+
+---
+
+Let me know if you also want a `.gitignore`, license, or badges at the top (build status, .NET version, etc.) to make it even more professional.
