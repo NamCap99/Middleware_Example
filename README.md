@@ -1,24 +1,70 @@
-# Middleware_Example
+# 🧩 Middleware_Example
 
-A simple ASP.NET Core 7 app demonstrating how to build and chain **custom middleware** components.
-
-## 🚀 Technologies
-- ASP.NET Core 7
-- C#
-- Visual Studio 2022
+This project demonstrates how to build custom middleware in **ASP.NET Core** to handle basic login logic without using controllers or Razor pages.
 
 ## 🔧 Features
-- Custom middleware logging
-- Chaining multiple middleware (`Middleware 1 → Middleware 2 → Middleware 3`)
-- Global exception handling
-- Request validation & error handling
 
-## 📁 Structure
-- `Controllers/` – Sample API endpoints
-- `Middlewares/` – Custom middleware logic
-- `Program.cs` – Pipeline config
-- `appsettings.json` – Configuration
+- Custom login middleware handling POST `/` requests
+- Returns appropriate HTTP status codes and messages
+- Validates email and password (hardcoded for demonstration)
+- Handles:
+  - ✅ Valid credentials (returns `200 OK`)
+  - ❌ Invalid credentials (returns `400 Bad Request`)
+  - ❌ Missing input (returns `400 Bad Request` with detailed messages)
+  - ✅ GET `/` request returns welcome message
 
-## ▶️ Run the App
-```bash
-git clone https://github.com/NamCap99/Middleware_Example.git
+## 📂 Project Structure
+
+MiddlewareExample/
+├── CustomMiddleware/
+│ └── LoginMiddleware.cs
+├── Program.cs
+└── README.md
+
+
+## 📮 Usage
+
+### ✅ POST Request to `/`
+
+Send a `POST` request with form data:
+
+**URL:** `http://localhost:5000/`  
+**Body (x-www-form-urlencoded):**
+email=admin@example.com
+password=admin1234
+
+
+**Response:**
+```http
+200 OK
+Login successful
+
+✅ GET / Request
+Accessing http://localhost:5000/ with a GET request returns a welcome message:
+
+http
+Copy
+Edit
+200 OK
+Welcome! Please use POST to log in
+
+🧠 Learning Purpose
+This project is ideal for understanding:
+
+The middleware pipeline in ASP.NET Core
+
+How to intercept HTTP requests without controllers
+
+Input validation and status code handling
+
+🛠️ Tech Stack
+.NET 8
+
+ASP.NET Core
+
+Custom Middleware
+
+Minimal API
+
+👨‍💻 Author
+Nam Cap (@NamCap99)
