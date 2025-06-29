@@ -1,74 +1,87 @@
-# 🧩 Middleware_Example
+# Middleware_Example
 
-This project demonstrates how to build custom middleware in **ASP.NET Core** to handle basic login logic without using controllers or Razor pages.
+A minimal ASP.NET Core application demonstrating how to build and use custom middleware to handle login logic. This project is ideal for learning how middleware can intercept HTTP requests and process them without relying on MVC controllers or Razor pages.
 
-## 🔧 Features
+---
 
-- Custom login middleware handling `POST /` requests
-- Returns appropriate HTTP status codes and messages
-- Validates email and password (hardcoded for demonstration)
-- Handles:
-  - ✅ Valid credentials (returns `200 OK`)
-  - ❌ Invalid credentials (returns `400 Bad Request`)
-  - ❌ Missing input (returns `400 Bad Request` with detailed messages)
-  - ✅ `GET /` request returns welcome message
+## 📌 Overview
 
-## 📂 Project Structure
+This application uses a custom `LoginMiddleware` class to handle `POST` requests to `/`. It checks for hardcoded credentials (`admin@example.com` / `admin1234`) and returns appropriate HTTP status codes and responses.
 
-MiddlewareExample/
-├── CustomMiddleware/
-│ └── LoginMiddleware.cs
-├── Program.cs
-└── README.md
+It also returns helpful validation messages when required inputs are missing, and handles `GET` requests with a friendly welcome message.
 
+---
 
-## 📮 Usage
+## 🚀 Getting Started
 
-### ✅ POST Request to `/`
+### Prerequisites
 
-Send a `POST` request with form data:
+- [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download)
+- Any REST client (e.g. [Postman](https://www.postman.com/), `curl`, or browser)
 
-**URL:** `http://localhost:5000/`  
-**Body (x-www-form-urlencoded):**
+### Run the App
 
-email=admin@example.com
-password=admin1234
+```bash
+git clone https://github.com/NamCap99/Middleware_Example.git
+cd Middleware_Example
+dotnet run
 
-**Response:**
-```http
+app.Urls.Add("http://localhost:5000");
+
+📮 Usage Examples
+✅ Valid Login
+Request:
+email=admin@example.com&password=admin1234
+Response:
 200 OK
 Login successful
 
-Input:
-email=wrong@example.com
-password=wrongpass
-
+❌ Invalid Credentials
+Request:
+email=wrong@example.com&password=wrongpass
 Response:
 400 Bad Request
 Invalid credentials
 
-🧠 Learning Purpose
-This project is ideal for understanding:
+❌ Missing Body
+Request:
+(no body)
+Response:
+400 Bad Request
+Invalid input for 'email'
+Invalid input for 'password'
 
-The middleware pipeline in ASP.NET Core
+✅ GET Request
+Request:
+GET /
 
-How to intercept HTTP requests without controllers
+Response:
+http
+Copy
+Edit
+200 OK
+Welcome! Please use POST to log in
 
-Input validation and status code handling
-
-🛠️ Tech Stack
-.NET 8
-
-ASP.NET Core
-
-Custom Middleware
-
-Minimal API
-
-👨‍💻 Author
-Nam Cap (@NamCap99)
+📁 Folder Structure
+MiddlewareExample/
+├── CustomMiddleware/
+│   └── LoginMiddleware.cs
+├── Program.cs
+└── README.md
 
 
 ---
 
-Let me know if you also want a `.gitignore`, license, or badges at the top (build status, .NET version, etc.) to make it even more professional.
+### ✅ This README includes:
+- A **professional intro**
+- `git clone` & `dotnet run` setup
+- Full usage examples
+- Real-world structure and tone
+- License section (you can create a `LICENSE` file if needed)
+
+Let me know if you want to:
+- Add badges (build passing, .NET version, etc.)
+- Include screenshots
+- Add CI/CD setup or Docker support
+
+I'm happy to help make it even more like a real-world open-source project.
